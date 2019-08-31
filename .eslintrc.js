@@ -2,6 +2,7 @@ const paths = require('./config/paths');
 
 module.exports = {
     extends: ['wiremore', 'wiremore/react', 'wiremore/typescript'],
+    plugins: ['react-hooks'],
     globals: {
         __BROWSER__: true,
         __SERVER__: true,
@@ -21,6 +22,8 @@ module.exports = {
         'import/no-unassigned-import': 0,
         'import/no-named-as-default-member': 0,
         'prettier/prettier': 'error',
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'warn',
     },
     // overrides: [{ files: ['*.tsx'], rules: { 'import/named': 0 } }],
 };

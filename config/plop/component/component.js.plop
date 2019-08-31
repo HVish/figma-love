@@ -1,6 +1,10 @@
 import React from 'react';
+import { WithTranslation } from 'react-i18next';
 
-const {{pascalCase componentName}} = (props) => {
+export interface Props extends WithTranslation {
+}
+
+const {{pascalCase componentName}} = ({}: Props) => {
     return <div />;
 };
 

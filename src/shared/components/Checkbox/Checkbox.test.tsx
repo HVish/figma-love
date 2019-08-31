@@ -1,18 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import i18next from 'i18next';
+import { shallow } from 'enzyme';
 
-import Search, { Props } from './Search';
+import Checkbox, { Props } from './Checkbox';
 
-describe('Search', () => {
+describe('Checkbox', () => {
     const defaultProps: Props = {
-        value: '',
+        checked: false,
         t: jest.fn(),
         tReady: true,
         i18n: i18next,
     };
 
     it('tests something', () => {
-        shallow(<Search {...defaultProps} />);
+        shallow(<Checkbox {...defaultProps} />);
     });
 });

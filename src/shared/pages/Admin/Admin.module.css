@@ -1,32 +1,35 @@
 .admin {
     background: #141318;
-    height: 100%;
+    color: #fff;
     display: flex;
     flex-direction: column;
-    color: #fff;
+    height: 100%;
+
+    /* local variables */
+    --content-width: 88rem;
 }
 
 header {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    height: 5.25rem;
     background: #1d1d24;
-    width: 100%;
+    display: flex;
     flex-shrink: 0;
+    height: 5.25rem;
+    justify-content: center;
+    width: 100%;
 }
 
 .headerWrapper {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    max-width: 88rem;
+    max-width: var(--content-width);
     padding: 1rem 1.5rem;
+    width: 100%;
 }
 
 .headerContent {
-    display: flex;
     align-items: center;
+    display: flex;
 }
 
 .logo {
@@ -34,32 +37,67 @@ header {
 }
 
 .count {
-    font-weight: 500;
     font-size: 1.25rem;
+    font-weight: 500;
     line-height: 1.5rem;
 }
 
 .addNewButton {
     background: #ff3366;
-    border-radius: 4px;
-    padding: 0.5rem 1.25rem;
-    color: #fff;
-    font-weight: bold;
-    font-size: 1rem;
     border: none;
-    line-height: 1.625rem;
+    border-radius: 4px;
+    color: #fff;
     cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.625rem;
     margin-right: 1.375rem;
+    padding: 0.5rem 1.25rem;
 }
 
-main {
+.main {
     flex: 1;
     overflow: auto;
+    padding: 1rem;
+}
+
+.table {
+    border-collapse: collapse;
+    margin: auto;
+    max-width: var(--content-width);
+    width: 100%;
+}
+
+.table tr {
+    background-color: #1d1d24;
+    border-bottom: 1px solid rgba(222, 226, 230, 0.1);
+    border-radius: 4px;
+    height: 4rem;
+}
+
+.table th {
+    text-transform: uppercase;
+}
+
+.table th,
+.table td {
+    padding: 0 0.5rem;
+    text-align: left;
+}
+
+.table th.center,
+.table td.center {
+    text-align: center;
+}
+
+.table th.right,
+.table td.right {
+    text-align: right;
 }
 
 footer {
-    display: flex;
     align-items: center;
+    display: flex;
     flex-shrink: 0;
     height: 6rem;
 }

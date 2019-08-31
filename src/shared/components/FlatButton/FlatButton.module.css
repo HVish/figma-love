@@ -1,0 +1,14 @@
+.flat-button {
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: #1abcfe;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.flat-button.danger {
+    color: #f24e1e;
+}

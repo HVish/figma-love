@@ -2,11 +2,11 @@ import React, { useCallback } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { withTranslation } from 'react-i18next';
+import { Route } from 'react-router';
+import Admin from 'pages/Admin';
 import favicon from '../shared/assets/favicon.png';
 import { setLocale } from './store/app/actions';
 import css from './App.module.css';
-import { Route } from 'react-router';
-import Admin from 'pages/Admin';
 
 type Props = {
     setLocale: (locale: string) => void;
@@ -28,7 +28,7 @@ const App = ({ setLocale, t }: Props) => {
                 titleTemplate="%s – Figma love - UX Design mockups"
                 link={[{ rel: 'icon', type: 'image/png', href: favicon }]}
             />
-            <Route path="/admin" component={Admin}></Route>
+            <Route path="/admin" component={Admin} />
             {/* <h2>{t('i18n-example')}</h2>
             <p>
                 <button value="de_DE" onClick={handleLocaleChange}>
