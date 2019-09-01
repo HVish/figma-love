@@ -4,6 +4,8 @@
     height: 1.25rem;
     position: relative;
     width: 1.25rem;
+    /* local variable */
+    --color: rgba(255, 255, 255, 0.54);
 }
 
 .checkbox::after,
@@ -15,18 +17,18 @@
 }
 
 .checkbox::before {
-    border: 3px solid var(--theme-color);
+    border: 2px solid var(--color);
     border-radius: 4px;
     bottom: 0;
     right: 0;
 }
 
 .checkbox.checked::after {
-    border-bottom: 3px solid var(--theme-color);
-    border-left: 3px solid var(--theme-color);
+    border-bottom: 2px solid var(--color);
+    border-left: 2px solid var(--color);
     height: 0.25rem;
-    left: 4px;
-    top: 5px;
+    left: 5px;
+    top: 6px;
     transform: rotate(-45deg);
     width: 0.5rem;
 }

@@ -50,7 +50,7 @@ const Admin = () => {
                             <td className={css.center}>
                                 <Checkbox checked={selectAll} onChange={onSelectAllChange} />
                             </td>
-                            <td>Material Design 1.0</td>
+                            <td className={css['no-alpha']}>Material Design 1.0</td>
                             <td>UI Kit</td>
                             <td>Jul 17, 2019</td>
                             <td>1500</td>
@@ -63,7 +63,7 @@ const Admin = () => {
                             <td className={css.center}>
                                 <Checkbox checked={selectAll} onChange={onSelectAllChange} />
                             </td>
-                            <td>iOS app icon template</td>
+                            <td className={css['no-alpha']}>iOS app icon template</td>
                             <td>iOS app</td>
                             <td>Jul 17, 2019</td>
                             <td>1500</td>
@@ -76,7 +76,7 @@ const Admin = () => {
                             <td className={css.center}>
                                 <Checkbox checked={selectAll} onChange={onSelectAllChange} />
                             </td>
-                            <td>Chrome 70 UI for Windows</td>
+                            <td className={css['no-alpha']}>Chrome 70 UI for Windows</td>
                             <td>UI Kit</td>
                             <td>Jul 17, 2019</td>
                             <td>1500</td>
