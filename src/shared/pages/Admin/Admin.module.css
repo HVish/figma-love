@@ -66,13 +66,34 @@ header {
     margin: auto;
     max-width: var(--content-width);
     width: 100%;
+    /* local variables */
+    --border-radius: 4px;
 }
 
 .table tr {
     background-color: #1d1d24;
     border-bottom: 1px solid rgba(222, 226, 230, 0.1);
-    border-radius: 4px;
     height: 4rem;
+}
+
+.table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table thead tr:first-child th:first-child {
+    border-top-left-radius: var(--border-radius);
+}
+
+.table thead tr:first-child th:last-child {
+    border-top-right-radius: var(--border-radius);
+}
+
+.table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: var(--border-radius);
+}
+
+.table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: var(--border-radius);
 }
 
 .table th {
