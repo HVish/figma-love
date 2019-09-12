@@ -7,8 +7,8 @@
     display: inline-flex;
     font-size: 1rem;
     padding: 0.5rem 0.75rem;
-}
 
-.flat-button.danger {
-    color: #f24e1e;
+    &.danger {
+        color: #f24e1e;
+    }
 }

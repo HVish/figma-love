@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { WithTranslation } from 'react-i18next';
-import css from './Checkbox.module.css';
+import styles from './Checkbox.module.scss';
 
 export interface Props extends WithTranslation {
     checked: boolean;
@@ -11,8 +11,8 @@ export interface Props extends WithTranslation {
 const Checkbox = ({ checked, onChange }: Props) => {
     return (
         <span
-            className={cn(css.checkbox, {
-                [css.checked]: checked,
+            className={cn(styles.checkbox, {
+                [styles.checked]: checked,
             })}
             onClick={onChange}
         />

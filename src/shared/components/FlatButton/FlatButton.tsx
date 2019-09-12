@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { WithTranslation } from 'react-i18next';
-import css from './FlatButton.module.css';
+import styles from './FlatButton.module.scss';
 
 export interface Props extends WithTranslation {
     type?: 'default' | 'danger';
@@ -12,8 +12,8 @@ export interface Props extends WithTranslation {
 const FlatButton = ({ type, onClick, children }: Props) => {
     return (
         <button
-            className={cn(css['flat-button'], {
-                [css.danger]: type === 'danger',
+            className={cn(styles['flat-button'], {
+                [styles.danger]: type === 'danger',
             })}
             onClick={onClick}
         >

@@ -6,7 +6,8 @@ import { Route } from 'react-router';
 import Admin from 'pages/Admin';
 import favicon from '../shared/assets/favicon.png';
 import { setLocale } from './store/app/actions';
-import css from './App.module.css';
+import styles from './App.module.scss';
+import './theme.scss';
 
 type Props = {
     setLocale: (locale: string) => void;
@@ -22,7 +23,7 @@ const App = ({ setLocale, t }: Props) => {
     );
 
     return (
-        <div className={css.wrapper}>
+        <div className={styles.wrapper}>
             <Helmet
                 defaultTitle="Figma love - UX Design mockups"
                 titleTemplate="%s – Figma love - UX Design mockups"

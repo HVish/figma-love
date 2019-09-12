@@ -2,8 +2,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const generateSourceMap = process.env.OMIT_SOURCEMAP === 'true' ? false : true;
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 
-const cssRegex = /\.css$/;
-const cssModuleRegex = /\.module\.css$/;
+const styleRegex = /\.s?css$/;
+const styleModuleRegex = /\.module\.s?css$/;
 
 // temporary wrapper function around getCSSModuleLocalIdent until this issue is resolved:
 // https://github.com/webpack-contrib/css-loader/pull/965
@@ -37,8 +37,8 @@ const babelLoader = {
     },
 };
 
-const cssModuleLoaderClient = {
-    test: cssModuleRegex,
+const styleModuleLoaderClient = {
+    test: styleModuleRegex,
     use: [
         require.resolve('css-hot-loader'),
         MiniCssExtractPlugin.loader,
@@ -62,12 +62,18 @@ const cssModuleLoaderClient = {
                 sourceMap: generateSourceMap,
             },
         },
+        {
+            loader: require.resolve('sass-loader'),
+            options: {
+                sourceMap: generateSourceMap,
+            },
+        },
     ],
 };
 
-const cssLoaderClient = {
-    test: cssRegex,
-    exclude: cssModuleRegex,
+const styleLoaderClient = {
+    test: styleRegex,
+    exclude: styleModuleRegex,
     use: [
         require.resolve('css-hot-loader'),
         MiniCssExtractPlugin.loader,
@@ -78,11 +84,17 @@ const cssLoaderClient = {
                 sourceMap: generateSourceMap,
             },
         },
+        {
+            loader: require.resolve('sass-loader'),
+            options: {
+                sourceMap: generateSourceMap,
+            },
+        },
     ],
 };
 
-const cssModuleLoaderServer = {
-    test: cssModuleRegex,
+const styleModuleLoaderServer = {
+    test: styleModuleRegex,
     use: [
         {
             loader: require.resolve('css-loader'),
@@ -102,13 +114,23 @@ const cssModuleLoaderServer = {
                 sourceMap: generateSourceMap,
             },
         },
+        {
+            loader: require.resolve('sass-loader'),
+            options: {
+                sourceMap: generateSourceMap,
+            },
+        },
     ],
 };
 
-const cssLoaderServer = {
-    test: cssRegex,
-    exclude: cssModuleRegex,
-    use: [MiniCssExtractPlugin.loader, require.resolve('css-loader')],
+const styleLoaderServer = {
+    test: styleRegex,
+    exclude: styleModuleRegex,
+    use: [
+        MiniCssExtractPlugin.loader,
+        require.resolve('css-loader'),
+        require.resolve('sass-loader'),
+    ],
 };
 
 const urlLoaderClient = {
@@ -129,7 +151,7 @@ const urlLoaderServer = {
 };
 
 const fileLoaderClient = {
-    exclude: [/\.(js|jsx|ts|tsx|css|mjs|html|ejs|json)$/],
+    exclude: [/\.(js|jsx|ts|tsx|s?css|mjs|html|ejs|json)$/],
     use: [
         {
             loader: require.resolve('file-loader'),
@@ -141,7 +163,7 @@ const fileLoaderClient = {
 };
 
 const fileLoaderServer = {
-    exclude: [/\.(js|tsx|ts|tsx|css|mjs|html|ejs|json)$/],
+    exclude: [/\.(js|tsx|ts|tsx|s?css|mjs|html|ejs|json)$/],
     use: [
         {
             loader: require.resolve('file-loader'),
@@ -157,8 +179,8 @@ const client = [
     {
         oneOf: [
             babelLoader,
-            cssModuleLoaderClient,
-            cssLoaderClient,
+            styleModuleLoaderClient,
+            styleLoaderClient,
             urlLoaderClient,
             fileLoaderClient,
         ],
@@ -168,8 +190,8 @@ const server = [
     {
         oneOf: [
             babelLoader,
-            cssModuleLoaderServer,
-            cssLoaderServer,
+            styleModuleLoaderServer,
+            styleLoaderServer,
             urlLoaderServer,
             fileLoaderServer,
         ],

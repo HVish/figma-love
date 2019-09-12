@@ -1,0 +1,88 @@
+// @import '../../node_modules/@csstools/normalize.css/normalize';
+@import '~@csstools/normalize.css/normalize';
+@import './variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: $font-size-base;
+    margin: 0;
+}
+
+.table {
+    border-collapse: collapse;
+    margin: auto;
+    max-width: $content-width;
+    width: 100%;
+
+    th,
+    td {
+        color: rgba(255, 255, 255, 0.8);
+        padding: 0 0.5rem;
+        text-align: left;
+
+        &.no-alpha {
+            color: #fff;
+        }
+
+        &.center {
+            text-align: center;
+        }
+
+        &.right {
+            text-align: right;
+        }
+    }
+
+    th {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.8125rem;
+        text-transform: uppercase;
+    }
+
+    tr {
+        background-color: #1d1d24;
+        border-bottom: 1px solid rgba(222, 226, 230, 0.1);
+        height: 4rem;
+    }
+
+    thead {
+        tr:first-child th {
+            &:first-child {
+                border-top-left-radius: $border-radius;
+            }
+            &:last-child {
+                border-top-right-radius: $border-radius;
+            }
+        }
+    }
+
+    tbody tr {
+        &:last-child {
+            border-bottom: none;
+        }
+        &:last-child td {
+            &:first-child {
+                border-bottom-left-radius: $border-radius;
+            }
+            &:last-child {
+                border-bottom-right-radius: $border-radius;
+            }
+        }
+    }
+
+    &-footer {
+        align-items: center;
+        display: flex;
+    }
+}
+
+/* select drop down styling */
+.select-dropdown {
+    min-width: 4.75rem;
+
+    & &__control {
+        background-color: transparent;
+        border: none;
+    }
+}

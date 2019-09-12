@@ -1,13 +1,36 @@
 import React, { useState, useCallback } from 'react';
+import Select from 'react-select';
+
+import { ReactComponent as LeftChevron } from 'shared/assets/chevron-left.svg';
+import { ReactComponent as RightChevron } from 'shared/assets/chevron-right.svg';
 import { ReactComponent as FigmaLoveLogo } from 'shared/assets/figma-love-logo.svg';
+
 import Search from 'components/Search';
 import Checkbox from 'components/Checkbox';
 import FlatButton from 'components/FlatButton';
-import css from './Admin.module.css';
+import styles from './Admin.module.scss';
+
+type OptionType = { label: string; value: string };
 
 const Admin = () => {
     const [search, setSearch] = useState('');
     const [selectAll, setSelectAll] = useState(false);
+
+    const perPageOptions: OptionType[] = [
+        {
+            label: '10',
+            value: '10',
+        },
+        {
+            label: '20',
+            value: '20',
+        },
+        {
+            label: '50',
+            value: '50',
+        },
+    ];
+    const [perPage, setPerPage] = useState(perPageOptions[0]);
 
     const onSelectAllChange = useCallback(() => {
         setSelectAll(!selectAll);
@@ -17,70 +40,74 @@ const Admin = () => {
         setSearch((e.target as HTMLInputElement).value);
     }, []);
 
+    const onPerPageChange = useCallback((value) => {
+        setPerPage(value);
+    }, []);
+
     return (
-        <div className={css.admin}>
+        <div className={styles.admin}>
             <header>
-                <div className={css.headerWrapper}>
-                    <div className={css.headerContent}>
-                        <FigmaLoveLogo className={css.logo} />
-                        <span className={css.count}>24 assets</span>
+                <div className={styles['header-wrapper']}>
+                    <div className={styles['header-content']}>
+                        <FigmaLoveLogo className={styles.logo} />
+                        <span className={styles.count}>24 assets</span>
                     </div>
-                    <div className={css.headerContent}>
-                        <button className={css.addNewButton}>Add new</button>
+                    <div className={styles['header-content']}>
+                        <button className={styles['add-new-button']}>Add new</button>
                         <Search value={search} placeholder="Search" onChange={onSearchChange} />
                     </div>
                 </div>
             </header>
-            <main className={css.main}>
-                <table className={css.table}>
+            <main className={styles.main}>
+                <table className="table">
                     <thead>
                         <tr>
-                            <th className={css.center}>
+                            <th className="center">
                                 <Checkbox checked={selectAll} onChange={onSelectAllChange} />
                             </th>
                             <th>title</th>
                             <th>category</th>
                             <th>date added</th>
                             <th>views</th>
-                            <th className={css.right} /> {/* actions */}
+                            <th className="right" /> {/* actions */}
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td className={css.center}>
+                            <td className="center">
                                 <Checkbox checked={selectAll} onChange={onSelectAllChange} />
                             </td>
-                            <td className={css['no-alpha']}>Material Design 1.0</td>
+                            <td className="no-alpha">Material Design 1.0</td>
                             <td>UI Kit</td>
                             <td>Jul 17, 2019</td>
                             <td>1500</td>
-                            <td className={css.right}>
+                            <td className="right">
                                 <FlatButton>Edit</FlatButton>
                                 <FlatButton type="danger">Delete</FlatButton>
                             </td>
                         </tr>
                         <tr>
-                            <td className={css.center}>
+                            <td className="center">
                                 <Checkbox checked={selectAll} onChange={onSelectAllChange} />
                             </td>
-                            <td className={css['no-alpha']}>iOS app icon template</td>
+                            <td className="no-alpha">iOS app icon template</td>
                             <td>iOS app</td>
                             <td>Jul 17, 2019</td>
                             <td>1500</td>
-                            <td className={css.right}>
+                            <td className="right">
                                 <FlatButton>Edit</FlatButton>
                                 <FlatButton type="danger">Delete</FlatButton>
                             </td>
                         </tr>
                         <tr>
-                            <td className={css.center}>
+                            <td className="center">
                                 <Checkbox checked={selectAll} onChange={onSelectAllChange} />
                             </td>
-                            <td className={css['no-alpha']}>Chrome 70 UI for Windows</td>
+                            <td className="no-alpha">Chrome 70 UI for Windows</td>
                             <td>UI Kit</td>
                             <td>Jul 17, 2019</td>
                             <td>1500</td>
-                            <td className={css.right}>
+                            <td className="right">
                                 <FlatButton>Edit</FlatButton>
                                 <FlatButton type="danger">Delete</FlatButton>
                             </td>
@@ -88,7 +115,39 @@ const Admin = () => {
                     </tbody>
                 </table>
             </main>
-            <footer>footer</footer>
+            <footer>
+                <div className="table-footer">
+                    <div className={styles['rows-per-page']}>
+                        <span>Rows per page:</span>
+                        <Select
+                            isSearchable={false}
+                            menuPlacement="auto"
+                            value={perPage}
+                            options={perPageOptions}
+                            onChange={onPerPageChange}
+                            classNamePrefix="select-dropdown"
+                            className="select-dropdown"
+                            // styles={{
+                            //     control: (style) => ({
+                            //         ...style,
+                            //         border: 'none',
+                            //         minWidth: '4.75rem',
+                            //         background: 'transparent',
+                            //     }),
+                            // }}
+                        />
+                    </div>
+                    <div className={styles['page-info']}>1-20 of 24</div>
+                    <div className={styles['page-navigations']}>
+                        <FlatButton>
+                            <LeftChevron />
+                        </FlatButton>
+                        <FlatButton>
+                            <RightChevron />
+                        </FlatButton>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 };

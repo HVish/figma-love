@@ -44,6 +44,15 @@ declare module '*.svg' {
     export default src;
 }
 
+declare module '*.module.scss' {
+    const css: { [key: string]: string };
+    export default css;
+}
+
+declare module '*.scss' {
+    export default any;
+}
+
 declare module '*.module.css' {
     const css: { [key: string]: string };
     export default css;

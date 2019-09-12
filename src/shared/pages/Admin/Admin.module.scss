@@ -1,0 +1,81 @@
+@import '../../variables.scss';
+
+.admin {
+    background: #141318;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    header {
+        align-items: center;
+        background: #1d1d24;
+        display: flex;
+        flex-shrink: 0;
+        height: 5.25rem;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+.header {
+    &-wrapper {
+        display: flex;
+        justify-content: space-between;
+        max-width: $content-width;
+        padding: 1rem 1.5rem;
+        width: 100%;
+    }
+
+    &-content {
+        align-items: center;
+        display: flex;
+    }
+}
+
+.logo {
+    margin-right: 1.375rem;
+}
+
+.count {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+}
+
+.add-new-button {
+    background: var(--theme-color);
+    border: none;
+    border-radius: $border-radius;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.625rem;
+    margin-right: 1.375rem;
+    padding: 0.5rem 1.25rem;
+}
+
+.main {
+    flex: 1;
+    overflow: auto;
+    padding: 1rem;
+}
+
+footer {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    height: 6rem;
+    justify-content: flex-end;
+}
+
+.rows-per-page {
+    align-items: center;
+    display: flex;
+    margin-right: 11.25rem;
+}
+
+.page-info {
+    margin-right: 9.375rem;
+}
