@@ -1,7 +1,12 @@
-// @import '../../node_modules/@csstools/normalize.css/normalize';
 @import '~@csstools/normalize.css/normalize';
 @import './variables.scss';
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -74,5 +79,28 @@ body {
     &-footer {
         align-items: center;
         display: flex;
+    }
+}
+
+.input {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: $border-radius;
+    box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.03);
+    color: rgba(0, 0, 0, 1);
+    font-size: 0.875rem;
+    line-height: 1rem;
+    margin-bottom: 1rem;
+    outline: none;
+    padding: 1rem;
+    resize: none;
+    width: 100%;
+
+    &::placeholder {
+        color: rgba(0, 0, 0, 0.4);
+    }
+
+    &:focus {
+        border: 1px solid $outline-color;
     }
 }

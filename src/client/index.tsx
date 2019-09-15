@@ -2,6 +2,8 @@ import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
+import Modal from 'react-modal';
+
 import { configureStore } from '../shared/store';
 import App from '../shared/App';
 import IntlProvider from '../shared/i18n/IntlProvider';
@@ -27,6 +29,9 @@ hydrate(
     </Provider>,
     document.getElementById('app')
 );
+
+// bind modals to app root
+Modal.setAppElement('#app');
 
 if (process.env.NODE_ENV === 'development') {
     if (module.hot) {

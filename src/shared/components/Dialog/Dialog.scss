@@ -1,0 +1,71 @@
+@import '../../mixins.scss';
+@import '../../variables.scss';
+
+$animation-delay: 350ms;
+$modal-margin: 1rem;
+$close-size: 2.75rem;
+
+.modal {
+    background: #fff;
+    border-radius: $border-radius;
+    margin: $modal-margin;
+    max-height: calc(100% - #{2 * $modal-margin});
+    max-width: calc(100% - #{2 * $modal-margin});
+    outline: none;
+    overflow: auto;
+    padding: 1.75rem;
+    position: relative;
+    transform: scale(0);
+    transition: transform $animation-delay cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    width: 60rem;
+
+    &--after-open {
+        transform: scale(1);
+    }
+
+    &--before-close {
+        transform: scale(0);
+    }
+
+    &__close {
+        @include center;
+        background-color: rgba(0, 0, 0, 0.2);
+        border: none;
+        border-radius: 0px $border-radius;
+        color: #fff;
+        cursor: pointer;
+        height: $close-size;
+        outline: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: $close-size;
+    }
+
+    &__body,
+    &__html {
+        &--open {
+            overflow: hidden;
+        }
+    }
+
+    &__overlay {
+        @include center;
+        background-color: rgba(0, 0, 0, 0.7);
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: opacity $animation-delay ease-in-out;
+
+        &--after-open {
+            opacity: 1;
+        }
+
+        &--before-close {
+            opacity: 0;
+        }
+    }
+}

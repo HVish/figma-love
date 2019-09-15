@@ -1,20 +1,24 @@
+@import '../../variables.scss';
+
 .search {
-    &-wrapper {
-        background: rgba(255, 255, 255, 0.06);
-        border-radius: 4px;
-        display: flex;
-        height: 2.75rem;
-    }
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: $border-radius;
+    color: #fff;
+    display: flex;
+    height: 2.75rem;
+    position: relative;
 
-    &-icon {
+    &__icon {
+        flex-shrink: 0;
         height: 100%;
-        padding: 0 1rem;
+        margin: 0 1rem;
     }
 
-    &-field {
+    &__field {
         background: transparent;
         border: none;
-        color: #fff;
+        color: inherit;
+        flex: 1;
         font-size: 1rem;
         line-height: 1.5rem;
         padding: 0.5rem 1rem;

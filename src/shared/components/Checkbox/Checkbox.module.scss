@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 $color: rgba(255, 255, 255, 0.54);
 
 .checkbox {
@@ -17,7 +19,7 @@ $color: rgba(255, 255, 255, 0.54);
 
     &::before {
         border: 2px solid $color;
-        border-radius: 4px;
+        border-radius: $border-radius;
         bottom: 0;
         right: 0;
     }
