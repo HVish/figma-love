@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import Select from 'react-select';
+import Creatable from 'react-select/creatable';
+import cn from 'classnames';
 
 import { ReactComponent as LeftChevron } from 'shared/assets/chevron-left.svg';
 import { ReactComponent as RightChevron } from 'shared/assets/chevron-right.svg';
@@ -9,6 +11,7 @@ import Search from 'components/Search';
 import Checkbox from 'components/Checkbox';
 import FlatButton from 'components/FlatButton';
 import Dialog from 'components/Dialog';
+import ImageUploader from 'components/ImageUploader';
 import styles from './Admin.module.scss';
 
 type OptionType = { label: string; value: string };
@@ -34,6 +37,18 @@ const Admin = () => {
     ];
     const [perPage, setPerPage] = useState(perPageOptions[0]);
 
+    const categoriesOption: OptionType[] = [
+        {
+            label: 'UI kit',
+            value: 'ui_kit',
+        },
+        {
+            label: 'Material',
+            value: 'material',
+        },
+    ];
+    const [categories, setCategories] = useState<OptionType[]>([]);
+
     const onSelectAllChange = useCallback(() => {
         setSelectAll(!selectAll);
     }, [selectAll]);
@@ -50,6 +65,10 @@ const Admin = () => {
         setIsCreateAssestDialogOpen(!isCreateAssestDialogOpen);
     }, [isCreateAssestDialogOpen]);
 
+    const onCategoriesChange = useCallback((value) => {
+        setCategories(value);
+    }, []);
+
     return (
         <div className={styles.admin}>
             <header>
@@ -60,7 +79,7 @@ const Admin = () => {
                     </div>
                     <div className={styles['header-content']}>
                         <button
-                            className={styles['add-new-button']}
+                            className={cn('cta-button', styles['add-new-button'])}
                             onClick={toggleCreateAssestDialog}
                         >
                             Add new
@@ -72,12 +91,35 @@ const Admin = () => {
                             contentLabel="Creat Assest Modal"
                         >
                             <h2 className={styles['create-asset__title']}>Add new asset</h2>
-                            <form>
+                            <form className={styles['create-asset__form']}>
                                 <input className="input" type="text" placeholder="Title" />
                                 <textarea className="input" rows={4} placeholder="Description" />
                                 <input className="input" type="text" placeholder="SEO keywords" />
                                 <input className="input" type="text" placeholder="Asset URL" />
                                 <input className="input" type="text" placeholder="SEO slug" />
+                                <div className={styles['create-asset__row']}>
+                                    <ImageUploader />
+                                    <Creatable
+                                        isMulti
+                                        menuPlacement="top"
+                                        classNamePrefix="select"
+                                        className={cn('select', styles['create-asset__category'])}
+                                        placeholder="Category"
+                                        onChange={onCategoriesChange}
+                                        value={categories}
+                                        options={categoriesOption}
+                                    />
+                                </div>
+                                <button
+                                    type="submit"
+                                    className={cn(
+                                        'cta-button',
+                                        'cta-button--lg',
+                                        styles['create-asset__submit']
+                                    )}
+                                >
+                                    Publish
+                                </button>
                             </form>
                         </Dialog>
                     </div>

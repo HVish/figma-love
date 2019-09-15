@@ -12,6 +12,7 @@ export interface Props extends WithTranslation {
 const FlatButton = ({ type, onClick, children }: Props) => {
     return (
         <button
+            type="button"
             className={cn(styles['flat-button'], {
                 [styles.danger]: type === 'danger',
             })}

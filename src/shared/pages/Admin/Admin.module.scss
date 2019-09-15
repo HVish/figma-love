@@ -44,16 +44,7 @@
 }
 
 .add-new-button {
-    background: $theme-color;
-    border: none;
-    border-radius: $border-radius;
-    color: #fff;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    line-height: 1.625rem;
     margin-right: 1.375rem;
-    padding: 0.5rem 1.25rem;
 }
 
 .main {
@@ -108,5 +99,21 @@ footer {
         font-weight: 500;
         margin: 0;
         margin-bottom: 2.25rem;
+    }
+
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+
+    &__row &__category {
+        width: 25.4375rem;
+    }
+
+    &__submit {
+        display: block;
+        margin-left: auto;
     }
 }
