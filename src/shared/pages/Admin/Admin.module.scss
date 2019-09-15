@@ -79,3 +79,25 @@ footer {
 .page-info {
     margin-right: 9.375rem;
 }
+
+/* select drop down styling */
+:global(.select-dropdown) {
+    margin-left: 0.5rem;
+    min-width: 4.75rem;
+
+    & &__control {
+        background-color: transparent;
+        border: none;
+    }
+
+    & &__single-value {
+        color: #fff;
+    }
+
+    & &__option {
+        color: #000;
+        &--is-selected {
+            color: #fff;
+        }
+    }
+}

@@ -127,14 +127,6 @@ const Admin = () => {
                             onChange={onPerPageChange}
                             classNamePrefix="select-dropdown"
                             className="select-dropdown"
-                            // styles={{
-                            //     control: (style) => ({
-                            //         ...style,
-                            //         border: 'none',
-                            //         minWidth: '4.75rem',
-                            //         background: 'transparent',
-                            //     }),
-                            // }}
                         />
                     </div>
                     <div className={styles['page-info']}>1-20 of 24</div>

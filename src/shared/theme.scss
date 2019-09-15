@@ -76,13 +76,3 @@ body {
         display: flex;
     }
 }
-
-/* select drop down styling */
-.select-dropdown {
-    min-width: 4.75rem;
-
-    & &__control {
-        background-color: transparent;
-        border: none;
-    }
-}
