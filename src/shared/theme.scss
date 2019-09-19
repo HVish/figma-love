@@ -39,8 +39,6 @@ body {
 
 .table {
     border-collapse: collapse;
-    margin: auto;
-    max-width: $content-width;
     width: 100%;
 
     th,
@@ -99,7 +97,7 @@ body {
         }
     }
 
-    &-footer {
+    &__footer {
         align-items: center;
         display: flex;
     }

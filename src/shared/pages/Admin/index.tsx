@@ -71,13 +71,13 @@ const Admin = () => {
 
     return (
         <div className={styles.admin}>
-            <header>
-                <div className={styles['header-wrapper']}>
-                    <div className={styles['header-content']}>
+            <header className={styles.header}>
+                <div className={styles.header__wrapper}>
+                    <div className={styles.header__item}>
                         <FigmaLoveLogo className={styles.logo} />
                         <span className={styles.count}>24 assets</span>
                     </div>
-                    <div className={styles['header-content']}>
+                    <div className={styles.header__item}>
                         <button
                             className={cn('cta-button', styles['add-new-button'])}
                             onClick={toggleCreateAssestDialog}
@@ -182,29 +182,27 @@ const Admin = () => {
                     </tbody>
                 </table>
             </main>
-            <footer>
-                <div className="table-footer">
-                    <div className={styles['rows-per-page']}>
-                        <span>Rows per page:</span>
-                        <Select
-                            isSearchable={false}
-                            menuPlacement="auto"
-                            value={perPage}
-                            options={perPageOptions}
-                            onChange={onPerPageChange}
-                            classNamePrefix="select-dropdown"
-                            className="select-dropdown"
-                        />
-                    </div>
-                    <div className={styles['page-info']}>1-20 of 24</div>
-                    <div className={styles['page-navigations']}>
-                        <FlatButton>
-                            <LeftChevron />
-                        </FlatButton>
-                        <FlatButton>
-                            <RightChevron />
-                        </FlatButton>
-                    </div>
+            <footer className="table__footer">
+                <div className={styles['rows-per-page']}>
+                    <span>Rows per page:</span>
+                    <Select
+                        isSearchable={false}
+                        menuPlacement="auto"
+                        value={perPage}
+                        options={perPageOptions}
+                        onChange={onPerPageChange}
+                        classNamePrefix="select-dropdown"
+                        className="select-dropdown"
+                    />
+                </div>
+                <div className={styles['page-info']}>1-20 of 24</div>
+                <div className={styles['page-navigations']}>
+                    <FlatButton>
+                        <LeftChevron />
+                    </FlatButton>
+                    <FlatButton>
+                        <RightChevron />
+                    </FlatButton>
                 </div>
             </footer>
         </div>
