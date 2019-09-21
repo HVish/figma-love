@@ -1,0 +1,102 @@
+@import '../../variables.scss';
+
+$z-search: 1;
+$z-overlay: 2;
+$animation-delay: 0.25s;
+$heading-spacing: 0.875rem;
+$options-padding: 1.875rem;
+$close-padding: 0.5rem;
+
+.nav {
+    transition: all $animation-delay ease;
+
+    &__header {
+        align-items: center;
+        background-color: #1d1d24;
+        display: flex;
+        height: 3.75rem;
+        justify-content: space-between;
+        padding: 0.5rem $heading-spacing;
+        position: relative;
+    }
+
+    &__logo {
+        transition: all $animation-delay ease;
+        width: 2.25rem;
+    }
+
+    &__options &__logo {
+        margin: $options-padding $options-padding 0;
+        width: 3.75rem;
+    }
+
+    &--searching &__logo {
+        opacity: 0;
+    }
+
+    &__browse {
+        color: #fff;
+        margin-left: auto;
+        margin-right: $search-width-collapsed + $heading-spacing;
+        transition: all $animation-delay ease;
+    }
+
+    &--searching &__browse {
+        opacity: 0;
+    }
+
+    &__search {
+        position: absolute;
+        right: 0.875rem;
+        z-index: $z-search;
+    }
+
+    &--searching &__search {
+        width: calc(100% - #{2 * $heading-spacing});
+    }
+
+    &__close {
+        color: #fff;
+        padding: $close-padding;
+        position: absolute;
+        right: $options-padding - $close-padding;
+        top: $options-padding - $close-padding;
+    }
+
+    &__options {
+        background: rgba(0, 0, 0, 0.9);
+        bottom: 0;
+        color: #fff;
+        left: 0;
+        opacity: 0;
+        overflow: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: scale(0);
+        transform-origin: top center;
+        transition: all $animation-delay ease-in-out;
+    }
+
+    &--open &__options {
+        opacity: 1;
+        transform: scale(1);
+        z-index: $z-overlay;
+    }
+
+    &__option {
+        cursor: pointer;
+        font-size: 0.9375rem;
+        padding: 1.125rem $options-padding;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.06);
+        }
+
+        &--title {
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+    }
+}

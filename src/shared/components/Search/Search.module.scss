@@ -1,5 +1,10 @@
 @import '../../variables.scss';
 
+$animation-delay: 0.25s;
+$cancel-icon-width: 2.625rem;
+$search-icon-width: $search-width-collapsed;
+$background-color: rgba(255, 255, 255, 0.06);
+
 @mixin icon($align: 'left') {
     border-radius: $border-radius;
     display: inline-block;
@@ -16,13 +21,8 @@
     }
 }
 
-$animation-delay: 0.5s;
-$search-icon-width: 3.25rem;
-$cancel-icon-width: 2.625rem;
-$background: rgba(255, 255, 255, 0.06);
-
 .search {
-    background-color: $background;
+    background-color: $background-color;
     border-radius: $border-radius;
     color: #fff;
     height: 2.75rem;
@@ -44,7 +44,7 @@ $background: rgba(255, 255, 255, 0.06);
     }
 
     &--collapsed &__icon:hover {
-        background-color: $background;
+        background-color: $background-color;
     }
 
     &__cancel {

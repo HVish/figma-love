@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withTranslation } from 'react-i18next';
 import { Route } from 'react-router';
 import Admin from 'pages/Admin';
+import Home from 'pages/Home';
 import favicon from '../shared/assets/favicon.png';
 import { setLocale } from './store/app/actions';
 import styles from './App.module.scss';
@@ -30,6 +31,7 @@ const App = ({ setLocale, t }: Props) => {
                 link={[{ rel: 'icon', type: 'image/png', href: favicon }]}
             />
             <Route path="/admin" component={Admin} />
+            <Route exact path="/" component={Home} />
             {/* <h2>{t('i18n-example')}</h2>
             <p>
                 <button value="de_DE" onClick={handleLocaleChange}>

@@ -4,6 +4,7 @@ import { Action, AppState } from './types';
 
 export const initialState = Object.freeze<AppState>({
     locale: 'en_US',
+    isNavOpen: false,
 });
 
 export default (state: AppState = initialState, action: Action): AppState =>
@@ -11,8 +12,12 @@ export default (state: AppState = initialState, action: Action): AppState =>
         const { type, payload } = action;
 
         switch (type) {
-            case ActionTypes.SETLOCALE: {
+            case ActionTypes.SET_LOCALE: {
                 draft.locale = payload;
+                return;
+            }
+            case ActionTypes.TOGGLE_NAV: {
+                draft.isNavOpen = payload !== undefined ? payload : !draft.isNavOpen;
                 return;
             }
         }

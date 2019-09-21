@@ -14,19 +14,33 @@ export interface Props extends WithTranslation {
     compact?: boolean;
     placeholder?: string;
     onCancel?(): void;
+    onToggle?(isExpanded: boolean): void;
     onChange?(e: React.FormEvent<HTMLInputElement>): void;
 }
 
-const Search = ({ className, compact = false, placeholder, value, onChange, onCancel }: Props) => {
+const Search = ({
+    className,
+    compact = false,
+    value,
+    placeholder,
+    onChange,
+    onCancel,
+    onToggle,
+}: Props) => {
     const [isCollapsed, setIsCollapsed] = useState(compact);
 
-    const onExpand = useCallback(() => setIsCollapsed(false), []);
+    const onExpand = useCallback(() => {
+        setIsCollapsed(false);
+        onToggle && onToggle(true);
+    }, [onToggle]);
+
     const onCancelClick = useCallback(() => {
         onCancel && onCancel();
         if (compact) {
             setIsCollapsed(!isCollapsed);
+            onToggle && onToggle(isCollapsed);
         }
-    }, [compact, isCollapsed, onCancel]);
+    }, [compact, isCollapsed, onCancel, onToggle]);
 
     return (
         <div
