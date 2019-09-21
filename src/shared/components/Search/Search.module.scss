@@ -1,17 +1,62 @@
 @import '../../variables.scss';
 
+@mixin icon($align: 'left') {
+    border-radius: $border-radius;
+    display: inline-block;
+    outline: none;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @if $align == 'left' {
+        left: 0;
+    } @else if $align == 'right' {
+        right: 0;
+    }
+}
+
+$animation-delay: 0.5s;
+$search-icon-width: 3.25rem;
+$cancel-icon-width: 2.625rem;
+$background: rgba(255, 255, 255, 0.06);
+
 .search {
-    background: rgba(255, 255, 255, 0.06);
+    background-color: $background;
     border-radius: $border-radius;
     color: #fff;
-    display: flex;
     height: 2.75rem;
+    overflow: hidden;
     position: relative;
+    transition: all $animation-delay ease-in-out;
+    width: 100%;
+
+    &--compact#{&}--collapsed {
+        background: transparent;
+        width: $search-icon-width;
+    }
 
     &__icon {
-        flex-shrink: 0;
-        height: 100%;
-        margin: 0 1rem;
+        @include icon('left');
+        color: inherit;
+        width: $search-icon-width;
+        z-index: 1;
+    }
+
+    &--collapsed &__icon:hover {
+        background-color: $background;
+    }
+
+    &__cancel {
+        @include icon('right');
+        opacity: 1;
+        transition: all $animation-delay ease-in-out;
+        width: $cancel-icon-width;
+    }
+
+    &--collapsed &__cancel {
+        opacity: 0;
+        z-index: -1;
     }
 
     &__field {
@@ -20,7 +65,9 @@
         color: inherit;
         flex: 1;
         font-size: 1rem;
+        height: 100%;
         line-height: 1.5rem;
-        padding: 0.5rem 1rem;
+        padding: 0.5rem $cancel-icon-width 0.5rem $search-icon-width;
+        width: 100%;
     }
 }

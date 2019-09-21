@@ -7,7 +7,7 @@ import { ReactComponent as LeftChevron } from 'shared/assets/chevron-left.svg';
 import { ReactComponent as RightChevron } from 'shared/assets/chevron-right.svg';
 import { ReactComponent as FigmaLoveLogo } from 'shared/assets/figma-love-logo.svg';
 
-import Search from 'components/Search';
+import Search, { useSearch } from 'components/Search';
 import Checkbox from 'components/Checkbox';
 import FlatButton from 'components/FlatButton';
 import Dialog from 'components/Dialog';
@@ -17,9 +17,10 @@ import styles from './Admin.module.scss';
 type OptionType = { label: string; value: string };
 
 const Admin = () => {
-    const [search, setSearch] = useState('');
     const [selectAll, setSelectAll] = useState(false);
     const [isCreateAssestDialogOpen, setIsCreateAssestDialogOpen] = useState(false);
+
+    const { value: search, onChange: setSearch, onCancel: cancelSearch } = useSearch();
 
     const perPageOptions: OptionType[] = [
         {
@@ -53,10 +54,6 @@ const Admin = () => {
         setSelectAll(!selectAll);
     }, [selectAll]);
 
-    const onSearchChange = useCallback((e: React.FormEvent<HTMLInputElement>) => {
-        setSearch((e.target as HTMLInputElement).value);
-    }, []);
-
     const onPerPageChange = useCallback((value) => {
         setPerPage(value);
     }, []);
@@ -84,7 +81,13 @@ const Admin = () => {
                         >
                             Add new
                         </button>
-                        <Search value={search} placeholder="Search" onChange={onSearchChange} />
+                        <Search
+                            value={search}
+                            placeholder="Search"
+                            onChange={setSearch}
+                            onCancel={cancelSearch}
+                            className={styles.admin__search}
+                        />
                         <Dialog
                             isOpen={isCreateAssestDialogOpen}
                             onRequestClose={toggleCreateAssestDialog}
