@@ -1,4 +1,6 @@
+@import '~include-media/dist/_include-media.scss';
 @import '../../variables.scss';
+@import '../../mixins.scss';
 
 $z-search: 1;
 $z-overlay: 2;
@@ -6,13 +8,21 @@ $animation-delay: 0.25s;
 $heading-spacing: 0.875rem;
 $options-padding: 1.875rem;
 $close-padding: 0.5rem;
+$background-color: #1d1d24;
+
+$nav-header-height-desktop: 10.375rem;
+$nav-width-desktop: 3.75rem;
 
 .nav {
     transition: all $animation-delay ease;
 
+    @include media('>tablet') {
+        display: none;
+    }
+
     &__header {
         align-items: center;
-        background-color: #1d1d24;
+        background-color: $background-color;
         display: flex;
         height: 3.75rem;
         justify-content: space-between;
@@ -97,6 +107,107 @@ $close-padding: 0.5rem;
             font-size: 1.125rem;
             font-weight: bold;
             margin-top: 1rem;
+        }
+    }
+}
+
+.nav-desktop {
+    background-color: $background-color;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+    transition: all $animation-delay ease;
+    width: $nav-width-desktop;
+
+    &:hover {
+        width: 20rem;
+    }
+
+    @include media('<=tablet') {
+        display: none;
+    }
+
+    &__logo {
+        margin: 2.125rem 0.75rem auto;
+        transition: all $animation-delay ease;
+        width: 2.25rem;
+    }
+
+    &:hover &__logo {
+        margin: 2.375rem 2.25rem auto;
+        width: 3.75rem;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        height: $nav-header-height-desktop;
+    }
+
+    &__search-wrapper {
+        background-color: rgba(255, 255, 255, 0.06);
+        padding: 0;
+        transition: all $animation-delay ease;
+    }
+
+    &:hover &__search-wrapper {
+        padding: 0 1.25rem;
+    }
+
+    &__search {
+        background-color: transparent;
+    }
+
+    &__options-label {
+        bottom: 0;
+        height: calc(100vh - #{$nav-header-height-desktop});
+        opacity: 1;
+        position: absolute;
+        right: 0;
+        width: 100%;
+        @include center;
+        span {
+            transform: rotate(-90deg);
+        }
+    }
+
+    &:hover &__options-label {
+        opacity: 0;
+    }
+
+    &__options {
+        flex: 1;
+        opacity: 0;
+        overflow: auto;
+        transform: scale(0);
+        transform-origin: top left;
+    }
+
+    &:hover &__options {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    &__option {
+        cursor: pointer;
+        font-size: 0.9375rem;
+        padding: 1.125rem 2.5rem;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.06);
+        }
+
+        &--title {
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-top: 1rem;
+
+            &:hover {
+                background-color: inherit;
+            }
         }
     }
 }

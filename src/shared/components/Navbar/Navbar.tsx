@@ -23,43 +23,84 @@ const Navbar = ({ isOpen, options, onToggle, children }: Props) => {
     const toggle = useCallback(() => onToggle && onToggle(), [onToggle]);
 
     return (
-        <nav
-            className={cn(styles.nav, {
-                [styles['nav--open']]: isOpen,
-                [styles['nav--searching']]: isSearchOpen,
-            })}
-        >
-            <div className={styles.nav__header}>
-                <FigmaLoveLogo className={styles.nav__logo} />
-                <FlatButton className={styles.nav__browse} onClick={toggle}>
-                    Browse categories
-                </FlatButton>
-                <Search
-                    compact
-                    value={search}
-                    placeholder="Search"
-                    onChange={setSearch}
-                    onCancel={cancelSearch}
-                    onToggle={setIsSearchOpen}
-                    className={styles.nav__search}
-                />
-            </div>
-            <div className={styles.nav__options}>
-                <FigmaLoveLogo className={styles.nav__logo} />
-                <FlatButton className={styles.nav__close} onClick={toggle}>
-                    <CloseIcon />
-                </FlatButton>
-                <div className={cn(styles.nav__option, styles['nav__option--title'])}>
-                    Categories
+        <>
+            <nav
+                className={cn(styles.nav, {
+                    [styles['nav--open']]: isOpen,
+                    [styles['nav--searching']]: isSearchOpen,
+                })}
+            >
+                <div className={styles.nav__header}>
+                    <FigmaLoveLogo className={styles.nav__logo} />
+                    <FlatButton className={styles.nav__browse} onClick={toggle}>
+                        Browse categories
+                    </FlatButton>
+                    <Search
+                        compact
+                        value={search}
+                        placeholder="Search"
+                        onChange={setSearch}
+                        onCancel={cancelSearch}
+                        onToggle={setIsSearchOpen}
+                        className={styles.nav__search}
+                    />
                 </div>
-                {options.map((option, key) => (
-                    <div key={key} className={styles.nav__option}>
-                        {option}
+                <div className={styles.nav__options}>
+                    <FigmaLoveLogo className={styles.nav__logo} />
+                    <FlatButton className={styles.nav__close} onClick={toggle}>
+                        <CloseIcon />
+                    </FlatButton>
+                    <div className={cn(styles.nav__option, styles['nav__option--title'])}>
+                        Categories
                     </div>
-                ))}
-                {children}
-            </div>
-        </nav>
+                    {options.map((option, key) => (
+                        <div key={key} className={styles.nav__option}>
+                            {option}
+                        </div>
+                    ))}
+                    {children}
+                </div>
+            </nav>
+            <nav
+                className={cn(styles['nav-desktop'], {
+                    [styles['nav-desktop--open']]: isOpen,
+                    [styles['nav-desktop--searching']]: isSearchOpen,
+                })}
+            >
+                <div className={styles['nav-desktop__header']}>
+                    <FigmaLoveLogo className={styles['nav-desktop__logo']} />
+                    <div className={styles['nav-desktop__search-wrapper']}>
+                        <Search
+                            value={search}
+                            placeholder="Search"
+                            onChange={setSearch}
+                            onCancel={cancelSearch}
+                            onToggle={setIsSearchOpen}
+                            className={styles['nav-desktop__search']}
+                        />
+                    </div>
+                </div>
+                <div className={styles['nav-desktop__options-label']}>
+                    <span>Categories</span>
+                </div>
+                <div className={styles['nav-desktop__options']}>
+                    <div
+                        className={cn(
+                            styles['nav-desktop__option'],
+                            styles['nav-desktop__option--title']
+                        )}
+                    >
+                        Categories
+                    </div>
+                    {options.map((option, key) => (
+                        <div key={key} className={styles['nav-desktop__option']}>
+                            {option}
+                        </div>
+                    ))}
+                    {children}
+                </div>
+            </nav>
+        </>
     );
 };
 
