@@ -1,0 +1,47 @@
+@import '../../mixins.scss';
+@import '../../variables.scss';
+
+.asset-card {
+    border-radius: $border-radius;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    max-width: 22.5rem;
+    min-height: 20.625rem;
+    padding: 0.875rem;
+    width: 100%;
+
+    &:hover {
+        background-color: #2f2f2f;
+    }
+
+    &__image {
+        border-radius: $border-radius;
+        height: 11.875rem;
+        margin-bottom: 1rem;
+        max-width: 20.75rem;
+        width: 100%;
+    }
+
+    &__categories {
+        font-size: 0.8125rem;
+        margin-bottom: 1rem;
+        opacity: 0.7;
+    }
+
+    &__title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        opacity: 0.9;
+        @include ellipsize;
+    }
+
+    &__description {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        margin-bottom: 1rem;
+        max-height: 2.5rem;
+        opacity: 0.6;
+        overflow: hidden;
+    }
+}

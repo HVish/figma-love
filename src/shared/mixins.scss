@@ -3,3 +3,9 @@
     display: flex;
     justify-content: center;
 }
+
+@mixin ellipsize {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

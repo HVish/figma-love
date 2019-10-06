@@ -3,11 +3,10 @@ import cn from 'classnames';
 import { WithTranslation } from 'react-i18next';
 import styles from './FlatButton.module.scss';
 
-export interface Props extends WithTranslation {
+export interface Props extends WithTranslation, BaseProps {
     type?: 'default' | 'danger';
-    className?: string;
     children?: React.ReactNode;
-    onClick?(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
+    onClick?(e?: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
 }
 
 const FlatButton = ({ type, className, onClick, children }: Props) => {

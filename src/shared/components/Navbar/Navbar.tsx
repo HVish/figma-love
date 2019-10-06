@@ -9,14 +9,14 @@ import FlatButton from 'components/FlatButton';
 import Search, { useSearch } from 'components/Search';
 import styles from './Navbar.module.scss';
 
-export interface Props extends WithTranslation {
+export interface Props extends WithTranslation, BaseProps {
     isOpen?: boolean;
     options: string[];
     onToggle?(isOpen?: boolean): void;
     children?: React.ReactNode;
 }
 
-const Navbar = ({ isOpen, options, onToggle, children }: Props) => {
+const Navbar = ({ isOpen, options, onToggle, ...props }: Props) => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
 
     const { value: search, onChange: setSearch, onCancel: cancelSearch } = useSearch();
@@ -25,7 +25,7 @@ const Navbar = ({ isOpen, options, onToggle, children }: Props) => {
     return (
         <>
             <nav
-                className={cn(styles.nav, {
+                className={cn(styles.nav, props.className, {
                     [styles['nav--open']]: isOpen,
                     [styles['nav--searching']]: isSearchOpen,
                 })}
@@ -58,11 +58,11 @@ const Navbar = ({ isOpen, options, onToggle, children }: Props) => {
                             {option}
                         </div>
                     ))}
-                    {children}
+                    {props.children}
                 </div>
             </nav>
             <nav
-                className={cn(styles['nav-desktop'], {
+                className={cn(styles['nav-desktop'], props.className, {
                     [styles['nav-desktop--open']]: isOpen,
                     [styles['nav-desktop--searching']]: isSearchOpen,
                 })}
@@ -97,7 +97,7 @@ const Navbar = ({ isOpen, options, onToggle, children }: Props) => {
                             {option}
                         </div>
                     ))}
-                    {children}
+                    {props.children}
                 </div>
             </nav>
         </>

@@ -1,0 +1,100 @@
+@import '~include-media/dist/_include-media.scss';
+@import '../../variables.scss';
+
+$content-padding: 4.375rem;
+
+.home {
+    background-color: #141318;
+    height: 100%;
+    padding-top: $nav-header-height-mobile;
+    width: 100%;
+
+    @include media('>tablet') {
+        padding-left: $nav-width-desktop;
+        padding-top: 0;
+    }
+
+    &__nav {
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: $z-nav;
+
+        @include media('>tablet') {
+            right: unset;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    &__header {
+        flex-shrink: 0;
+        padding: 0 0.875rem;
+        position: relative;
+
+        @include media('>tablet') {
+            height: 7.125rem;
+            padding: 0 $content-padding;
+        }
+    }
+
+    &__asset-list {
+        flex: 1;
+        margin-bottom: 1rem;
+        overflow: hidden;
+    }
+
+    &__title {
+        color: #fff;
+        font-size: 1.5rem;
+        margin: 1.5rem 0;
+        opacity: 0.9;
+
+        @include media('>tablet') {
+            left: $content-padding;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    &__tabs {
+        align-items: center;
+        display: flex;
+        margin-bottom: 1.75rem;
+
+        @include media('>tablet') {
+            height: 100%;
+            justify-content: center;
+            margin-bottom: 0;
+        }
+    }
+
+    &__tab {
+        color: #fff;
+        font-size: 1rem;
+        margin-right: 1.5rem;
+        padding: 0;
+        text-transform: uppercase;
+
+        &--active {
+            color: $accent-color;
+        }
+    }
+
+    &__asset-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        @include media('>tablet') {
+            padding: 0 $content-padding;
+        }
+    }
+}
