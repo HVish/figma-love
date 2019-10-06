@@ -1,4 +1,4 @@
-import faker from 'faker';
+import faker from 'faker/locale/en';
 
 import asset1Image from 'shared/assets/mocks/asset-1.png';
 import asset2Image from 'shared/assets/mocks/asset-2.png';
