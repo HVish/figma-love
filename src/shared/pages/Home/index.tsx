@@ -18,14 +18,15 @@ const ASSET_CARD_WIDTH = 360;
 const ASSET_CARD_HEIGHT = 363;
 
 const Home = () => {
-    const [listWidth, setListWidth] = useState(1000);
-    const [listHeight, setListHeight] = useState(1000);
+    // for server side rendering use default laptop screen size
+    const [listWidth, setListWidth] = useState(1440);
+    const [listHeight, setListHeight] = useState(900);
     const assetListRef = useRef<HTMLDivElement>(null);
 
     const [activeTab, setActiveTab] = useState<HomeTab>('recent');
     const onTabSelect = useCallback((tab: HomeTab) => setActiveTab(tab), []);
 
-    const assetsInOneRow = Math.floor(listWidth / ASSET_CARD_WIDTH);
+    const assetsInOneRow = Math.floor(listWidth / Math.min(ASSET_CARD_WIDTH, listWidth));
     const rowCount = Math.ceil(assets.length / assetsInOneRow);
 
     const resize = useCallback(() => {

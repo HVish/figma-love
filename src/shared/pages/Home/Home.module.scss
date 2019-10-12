@@ -47,6 +47,10 @@ $content-padding: 4.375rem;
         flex: 1;
         margin-bottom: 1rem;
         overflow: hidden;
+
+        @include media('>tablet') {
+            margin: 0 $content-padding;
+        }
     }
 
     &__title {
@@ -92,9 +96,5 @@ $content-padding: 4.375rem;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-
-        @include media('>tablet') {
-            padding: 0 $content-padding;
-        }
     }
 }
