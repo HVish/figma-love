@@ -93,37 +93,50 @@ const Admin = () => {
                             onRequestClose={toggleCreateAssestDialog}
                             contentLabel="Creat Assest Modal"
                         >
-                            <h2 className={styles['create-asset__title']}>Add new asset</h2>
-                            <form className={styles['create-asset__form']}>
-                                <input className="input" type="text" placeholder="Title" />
-                                <textarea className="input" rows={4} placeholder="Description" />
-                                <input className="input" type="text" placeholder="SEO keywords" />
-                                <input className="input" type="text" placeholder="Asset URL" />
-                                <input className="input" type="text" placeholder="SEO slug" />
-                                <div className={styles['create-asset__row']}>
-                                    <ImageUploader />
-                                    <Creatable
-                                        isMulti
-                                        menuPlacement="top"
-                                        classNamePrefix="select"
-                                        className={cn('select', styles['create-asset__category'])}
-                                        placeholder="Category"
-                                        onChange={onCategoriesChange}
-                                        value={categories}
-                                        options={categoriesOption}
+                            <div className={styles['create-asset']}>
+                                <h2 className={styles['create-asset__title']}>Add new asset</h2>
+                                <form className={styles['create-asset__form']}>
+                                    <input className="input" type="text" placeholder="Title" />
+                                    <textarea
+                                        className="input"
+                                        rows={4}
+                                        placeholder="Description"
                                     />
-                                </div>
-                                <button
-                                    type="submit"
-                                    className={cn(
-                                        'cta-button',
-                                        'cta-button--lg',
-                                        styles['create-asset__submit']
-                                    )}
-                                >
-                                    Publish
-                                </button>
-                            </form>
+                                    <input
+                                        className="input"
+                                        type="text"
+                                        placeholder="SEO keywords"
+                                    />
+                                    <input className="input" type="text" placeholder="Asset URL" />
+                                    <input className="input" type="text" placeholder="SEO slug" />
+                                    <div className={styles['create-asset__row']}>
+                                        <ImageUploader />
+                                        <Creatable
+                                            isMulti
+                                            menuPlacement="top"
+                                            classNamePrefix="select"
+                                            className={cn(
+                                                'select',
+                                                styles['create-asset__category']
+                                            )}
+                                            placeholder="Category"
+                                            onChange={onCategoriesChange}
+                                            value={categories}
+                                            options={categoriesOption}
+                                        />
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        className={cn(
+                                            'cta-button',
+                                            'cta-button--lg',
+                                            styles['create-asset__submit']
+                                        )}
+                                    >
+                                        Publish
+                                    </button>
+                                </form>
+                            </div>
                         </Dialog>
                     </div>
                 </div>

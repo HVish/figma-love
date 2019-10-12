@@ -13,7 +13,6 @@ $close-size: 2.75rem;
     max-width: calc(100% - #{2 * $modal-margin});
     outline: none;
     overflow: auto;
-    padding: 1.75rem;
     position: relative;
     transform: scale(0);
     transition: transform $animation-delay cubic-bezier(0.68, -0.55, 0.27, 1.55);
@@ -63,6 +62,7 @@ $close-size: 2.75rem;
         right: 0;
         top: 0;
         transition: opacity $animation-delay ease-in-out;
+        z-index: 10;
 
         &--after-open {
             opacity: 1;

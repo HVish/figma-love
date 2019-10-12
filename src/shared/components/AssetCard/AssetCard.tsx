@@ -1,10 +1,16 @@
 import React, { useCallback } from 'react';
 import { WithTranslation } from 'react-i18next';
 import cn from 'classnames';
+import { useHistory } from 'react-router';
 
+import slugify from 'helpers/slugify';
+import { PageMode } from 'store/app/types';
 import styles from './AssetCard.module.scss';
 
-export interface Props extends WithTranslation, BaseProps, Asset {}
+export interface Props extends WithTranslation, BaseProps, Asset {
+    setAssetPageMode: (mode: PageMode) => any;
+    assetPageMode: PageMode;
+}
 
 const AssetCard = ({
     title,
@@ -14,11 +20,17 @@ const AssetCard = ({
     assetURL,
     categories,
     keywords,
+    setAssetPageMode,
+    assetPageMode,
     ...props
 }: Props) => {
+    const history = useHistory();
     const onClick = useCallback(() => {
-        // TODO: show asset modal
-    }, []);
+        if (assetPageMode === 'full_screen') {
+            setAssetPageMode('popup');
+        }
+        history.push(`${slugify(categories[0])}/${slug}`);
+    }, [history, categories, slug, assetPageMode, setAssetPageMode]);
 
     return (
         <div className={cn(styles['asset-card'], props.className)} onClick={onClick}>

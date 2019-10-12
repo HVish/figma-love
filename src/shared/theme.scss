@@ -17,6 +17,12 @@ body {
     margin: 0;
 }
 
+.link {
+    color: $accent-color;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .cta-button {
     background: $theme-color;
     border: none;
@@ -27,11 +33,12 @@ body {
     font-weight: bold;
     line-height: 1.625rem;
     padding: 0.5rem 1.25rem;
+    text-decoration: none;
+    @include center;
 
     &--lg {
         font-size: 1.25rem;
         height: 3.75rem;
-        width: 11rem;
     }
 
     &:disabled {

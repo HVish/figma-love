@@ -8,6 +8,7 @@ import asset5Image from 'shared/assets/mocks/asset-5.png';
 import asset6Image from 'shared/assets/mocks/asset-6.png';
 import asset7Image from 'shared/assets/mocks/asset-7.png';
 
+import slugify from 'helpers/slugify';
 import { getRandomCategories } from './categories';
 
 export const assetImages = [
@@ -22,9 +23,10 @@ export const assetImages = [
 
 export default function getRandomAssets(count: number): Asset[] {
     return Array.from({ length: count }).map(() => {
+        const title = faker.company.catchPhrase();
         return {
             id: faker.random.uuid(),
-            title: faker.company.catchPhrase(),
+            title,
             description: faker.lorem.paragraphs(),
             image: faker.random.arrayElement(assetImages),
             categories: getRandomCategories(
@@ -35,7 +37,12 @@ export default function getRandomAssets(count: number): Asset[] {
             ),
             keywords: faker.random.words(3).split(' '),
             assetURL: faker.internet.url(),
-            slug: faker.internet.url(),
+            slug: slugify(title),
+            viewCount: faker.random.number({
+                min: 560,
+                max: 4238,
+            }),
+            createdAt: faker.date.past().valueOf(),
         };
     });
 }

@@ -12,4 +12,6 @@ interface Asset {
     slug: string;
     assetURL: string;
     keywords: string[];
+    viewCount: number;
+    createdAt: number; // unix timestamp
 }

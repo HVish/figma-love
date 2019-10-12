@@ -5,6 +5,7 @@ import { Action, AppState } from './types';
 export const initialState = Object.freeze<AppState>({
     locale: 'en_US',
     isNavOpen: false,
+    assetPageMode: 'full_screen',
 });
 
 export default (state: AppState = initialState, action: Action): AppState =>
@@ -18,6 +19,10 @@ export default (state: AppState = initialState, action: Action): AppState =>
             }
             case ActionTypes.TOGGLE_NAV: {
                 draft.isNavOpen = payload !== undefined ? payload : !draft.isNavOpen;
+                return;
+            }
+            case ActionTypes.SET_ASSET_PAGE_MODE: {
+                draft.assetPageMode = payload;
                 return;
             }
         }

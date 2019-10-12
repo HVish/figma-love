@@ -10,6 +10,8 @@ describe('AssetCard', () => {
         t: jest.fn(),
         tReady: true,
         i18n: i18next,
+        assetPageMode: 'full_screen',
+        setAssetPageMode: jest.fn(),
         ...getRandomAssets(1)[0],
     };
 

@@ -99,6 +99,8 @@ footer {
 }
 
 .create-asset {
+    padding: 1.75rem;
+
     &__title {
         font-size: 1.25rem;
         font-weight: 500;
@@ -120,5 +122,6 @@ footer {
     &__submit {
         display: block;
         margin-left: auto;
+        width: 11rem;
     }
 }

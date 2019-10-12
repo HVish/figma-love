@@ -1,14 +1,19 @@
 import { createSelector } from 'reselect';
-import { AppState, Locale } from './types';
+import { AppState } from './types';
 
 export const app = (state: { app: AppState }): AppState => state.app;
 
 export const getLocale = createSelector(
     [app],
-    (app): Locale => app.locale
+    (app) => app.locale
 );
 
 export const getIsNavOpen = createSelector(
     [app],
-    (app): boolean => app.isNavOpen
+    (app) => app.isNavOpen
+);
+
+export const getAssetPageMode = createSelector(
+    [app],
+    (app) => app.assetPageMode
 );

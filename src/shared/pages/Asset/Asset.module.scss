@@ -1,0 +1,125 @@
+@import '~include-media/dist/_include-media.scss';
+@import '../../mixins.scss';
+
+.categories {
+    color: inherit;
+
+    span {
+        margin-right: 0.25rem;
+
+        &:first-child {
+            opacity: 0.6;
+        }
+    }
+}
+
+.analytics {
+    align-items: center;
+    display: flex;
+    margin: 1.5rem 0;
+    opacity: 0.5;
+
+    &__icon {
+        width: 1.875rem;
+    }
+
+    &__details {
+        flex: 1;
+    }
+}
+
+.asset {
+    color: #000;
+    padding: 0;
+
+    &__wrapper {
+        background-color: #141318;
+        display: flex;
+    }
+
+    &--full-page {
+        color: #fff;
+        margin: 0 auto;
+        max-width: 60rem;
+        padding: 0 0.875rem;
+        width: 100%;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        margin: 1.25rem 0;
+
+        @include media('>tablet') {
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 3.75rem 0 2.25rem;
+        }
+    }
+
+    &__cta {
+        margin-top: 1.625rem;
+
+        @include media('>tablet') {
+            margin-top: 0;
+        }
+    }
+
+    &__content {
+        padding: 1.875rem 1.5rem 1.5rem;
+
+        @include media('>tablet') {
+            display: flex;
+            padding: 2.5rem 4.375rem;
+        }
+    }
+
+    &--full-page &__content {
+        margin: 1.5rem 0;
+        padding: 0;
+
+        @include media('>tablet') {
+            margin: 2.5rem 0;
+        }
+    }
+
+    &__image {
+        width: 100%;
+    }
+
+    &__details {
+        @include media('>tablet') {
+            flex: 1;
+            margin-right: 4.375rem;
+        }
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        margin-bottom: 0.8125rem;
+        opacity: 0.9;
+        @include ellipsize;
+    }
+
+    &__categories {
+        font-size: 0.875rem;
+    }
+
+    &__description {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        opacity: 0.6;
+        text-align: justify;
+    }
+
+    &__meta-data {
+        display: flex;
+        flex-direction: column;
+
+        @include media('>tablet') {
+            flex-direction: column-reverse;
+            justify-content: flex-end;
+            width: 16rem;
+        }
+    }
+}
