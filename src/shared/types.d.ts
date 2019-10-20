@@ -4,7 +4,7 @@ interface BaseProps {
 }
 
 interface Asset {
-    id: string;
+    id?: string;
     title: string;
     description: string;
     categories: string[];

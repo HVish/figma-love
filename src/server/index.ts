@@ -5,8 +5,11 @@ import cors from 'cors';
 import chalk from 'chalk';
 import manifestHelpers from 'express-manifest-helpers';
 import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+
 import paths from '../../config/paths';
 import { configureStore } from '../shared/store';
+import apiRoutes from './api/routes';
 import errorHandler from './middleware/errorHandler';
 import serverRenderer from './middleware/serverRenderer';
 
@@ -22,6 +25,9 @@ app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// handle api only requests
+app.use('/api', apiRoutes);
 
 const addStore = (
     _req: express.Request,
@@ -49,11 +55,26 @@ app.use(serverRenderer());
 
 app.use(errorHandler);
 
-app.listen(process.env.PORT || 8500, () => {
-    console.log(
-        `[${new Date().toISOString()}]`,
-        chalk.blue(`App is running: http://localhost:${process.env.PORT || 8500}`)
-    );
+const PORT = process.env.PORT || 8500;
+const DB_URI = process.env.DB_URI || 'mongodb://localhost/figma-love';
+
+// connect to database
+mongoose.connect(DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+    app.listen(PORT, () => {
+        console.log(
+            `[${new Date().toISOString()}]`,
+            chalk.blue(`App is running: http://localhost:${PORT}`)
+        );
+    });
 });
 
 export default app;
