@@ -1,0 +1,47 @@
+@import '../../mixins.scss';
+@import '../../variables.scss';
+
+.asset-card {
+    border-radius: $border-radius;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    max-width: 22.5rem;
+    min-height: 20.625rem;
+    padding: 0.875rem;
+    width: 100%;
+
+    &__image {
+        @include center;
+        background-color: rgba(255, 255, 255, 0.15);
+        border-radius: $border-radius;
+        height: 11.875rem;
+        margin-bottom: 1rem;
+        max-width: 20.75rem;
+        width: 100%;
+    }
+
+    &__categories {
+        background-color: rgba(255, 255, 255, 0.11);
+        border-radius: $border-radius;
+        height: 0.625rem;
+        margin-bottom: 1rem;
+        width: 25%;
+    }
+
+    &__title {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: $border-radius;
+        height: 0.875rem;
+        margin-bottom: 1rem;
+        width: 50%;
+    }
+
+    &__description {
+        background-color: rgba(255, 255, 255, 0.11);
+        border-radius: $border-radius;
+        height: 0.625rem;
+        margin-bottom: 0.5rem;
+        width: 100%;
+    }
+}
